@@ -4,18 +4,21 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class PageController extends Controller
 {
+
+
     public function index()
     {
-        $title = 'Homepage';
-        $description = "Homepage description";
-        return view('home', compact('title', 'description'));
+        $movies = Movie::all();
+        return view('home', compact('movies'));
     }
 
-    public function contacts()
+    public function movies()
     {
-        return 'Contacts page';
+        $movies = Movie::all();
+        return view('movies', compact('movies'));
     }
 }
